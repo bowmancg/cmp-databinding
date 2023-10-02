@@ -6,13 +6,13 @@ import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '
   styleUrls: ['./cockpit.component.css'],
 })
 export class CockpitComponent implements OnInit {
-  @Output() serverCreated = new EventEmitter<{
+  @Output('serverCreated') serverCreated = new EventEmitter<{
     serverName: string;
     serverContent: string;
   }>();
   @Output('bpCreated') blueprintCreated = new EventEmitter<{
     serverName: string;
-    serverContentInput: string;
+    serverContent: string;
   }>();
   @ViewChild('serverContentInput', {static: true})
   serverContentInput: ElementRef
@@ -31,7 +31,7 @@ export class CockpitComponent implements OnInit {
   onAddBlueprint(nameInput: HTMLInputElement) {
     this.blueprintCreated.emit({
       serverName: nameInput.value,
-      serverContentInput: this.serverContentInput.nativeElement.value
+      serverContent: this.serverContentInput.nativeElement.value
     });
   }
 }
